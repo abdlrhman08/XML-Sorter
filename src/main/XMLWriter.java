@@ -70,15 +70,23 @@ public class XMLWriter {
 	//Sort the elements in the array list
 	public void sortElements(ArrayList<Element> list) {
 		for (int i = 0; i < list.size() - 1; i++) {
-			String name1 = list.get(i).getElementsByTagName("SHORT-NAME").item(0).getTextContent();
-			String name2 = list.get(i + 1).getElementsByTagName("SHORT-NAME").item(0).getTextContent();
+			Element min = list.get(i);
 			
-			if (name1.compareTo(name2) > 0) {
-				// Random element to instantiate a temporary element object
-				Element temp = list.get(i);
+			for (int j = i + 1; j < list.size(); j++) {
+				String name2 = list.get(j).getElementsByTagName("SHORT-NAME").item(0).getTextContent();
 				
-				list.set(i, list.get(i + 1));
-				list.set(i + 1, temp);
+				if (min.getElementsByTagName("SHORT-NAME").item(0).getTextContent().get.compareTo(name2) > 0) {
+					// Random element to instantiate a temporary element object
+					min = list.get(j);
+					
+				}
+			
+			}
+			
+			Element temp = list.get(i);
+				
+			list.set(i, min);
+			list.set(min, temp);
 			}
 		}
 		
